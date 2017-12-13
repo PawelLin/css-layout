@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>css布局</title>
+	<style>
+	html, body, div, ul, li{
+		margin:0;
+	}
+	html, body{
+		height:100%;
+		font-family: "Microsoft YaHei";
+		overflow: hidden;
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+	a{
+		color: #000	;
+		text-decoration: none;
+	}
+	#app {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		background-color: #EEE;
+	}
+	header {
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		border-bottom: 1px solid #FFF;
+	}
+	#container {
+		flex: 1;
+		display: flex;
+	}
+	#container > ul{
+		width: 200px;
+		flex-shrink: 0;
+		border-right: 1px solid #FFF;
+	}
+	#container > ul > li{
+		transition: .3s all;
+	}
+	#container > ul > li:hover{
+		background-color: #FFF;
+	}
+	#container a {
+		display: block;
+		padding: 10px 30px;
+	}
+	.content {
+		width: 100%;
+	}
+	.content>iframe{
+		width: 100%;
+		height: 100%;
+		border: none;
+	}
+	.menu-li-active{
+		background-color: #FFF;
+	}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<header>
+			CSS布局
+		</header>
+		<div id="container">
+			<ul>
+				<li>
+					<a onclick="views(this, 'summary')" href="javascript:;">概念</a>
+				</li>
+				<li>
+					<a onclick="views(this, 'two')" href="javascript:;">两栏布局</a>
+				</li>
+				<li class="menu-li-active">
+					<a onclick="views(this, 'three')" href="javascript:;">三栏布局</a>
+				</li>
+				<li>
+					<a onclick="views(this, 'high')" href="javascript:;">等高布局</a>
+				</li>
+				<li>
+					<a onclick="views(this, 'float')" href="javascript:;">浮动布局</a>
+				</li>
+				<li>
+					<a onclick="views(this, 'justify')" href="javascript:;">两端对齐布局</a>
+				</li>
+				<li>
+					<a onclick="views(this, 'flex')" href="javascript:;">Flex弹性布局</a>
+				</li>
+				<li>
+					<a onclick="views(this, 'masonry')" href="javascript:;">瀑布流布局</a>
+				</li>
+			</ul>
+			<div class="content">
+				<iframe id="iframe" src="views/masonry.html"></iframe>
+			</div>
+		</div>
+	</div>
+	<script>
+		
+		function views (that, pageName) {
+			let listLi = document.querySelector('#container').querySelectorAll('li')
+			for(let i = 0; i < listLi.length; i++) {
+				listLi[i].className = ''
+			}
+			that.parentNode.className = 'menu-li-active'
+			document.querySelector('#iframe').src = `views/${pageName}.html`
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>flex示例</title>
+    <link rel="stylesheet" type="text/css" href="../css/flex.css">
+</head>
+<body>
+	<div id="flex">
+	    <div class="flexDirection" :class="{'_flexDirection': showSelf}">
+	    	<div v-for="item in flex">
+	    		<span class="span" :title="item.title">{{item.type}}</span>
+	    		<button @click="changeFlex(item.type, ite.type)" v-for="ite in item.list" :title="ite.title" :class="{'buttonSelect': style[item.type] === ite.type}" v-show="!showSelf">{{ite.type}}</button>
+                <select v-model="style[item.type]" v-show="showSelf">
+                    <option v-for="ite in item.list">{{ite.type}}</option>
+                </select>
+	    	</div>
+	        <div>
+                <button @click="addPip">添加项目</button>
+	            <button @click="removePip">删除项目</button>
+                <button @click="changeShowSelf">{{showSelf ? '隐藏项目样式' : '显示项目样式'}}</button>
+	        </div>
+            <div>
+                <table class="table" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <th>align-self</th>
+                    </thead>
+                    <tbody>
+                        <tr><td>stretch</td></tr>
+                        <tr><td>flex-start</td></tr>
+                        <tr><td>flex-end</td></tr>
+                        <tr><td>center</td></tr>
+                        <tr><td>baseline</td></tr>
+                    </tbody>
+                </table>
+            </div>
+	    </div>
+	    <div class="container" :style="style" :class="{'_container': showSelf}">
+	        <div class="first-face" :class="{'_first-face': showSelf}" v-for="(item, index) in pies" 
+            :style="{
+                'order': item['order'],
+                'flex-grow': item['flex-grow'],
+                'flex-shrink': item['flex-shrink'],
+                'flex-basis': item['flex-basis'],
+                'align-self': item['align-self']
+            }">
+	            <div class="pip">
+                    <span v-show="!showSelf">{{++index}}</span>
+                </div>
+                <div class="style-set" v-show="showSelf">
+                    <ul>
+                        <li v-for="ite in selfFlex">
+                            <label>{{ite}}</label>
+                            <input v-model="item[ite]" type="" name="" @input="_input(item, $event)">
+                        </li>
+                    </ul>
+                    <div :ref="index+'showline'" :style="{'width':item.width+'px','bottom':(-index * 50 - 1) + 'px'}" style="height: 1px;position: absolute;background-color: #000;transition: all 1s;">
+                        {{item.width}}
+                    </div>
+                </div>
+	        </div>
+	    </div>
+	</div>
+	<script src="../data/flex.js"></script>
+    <script src="../vue.js"></script>
+    <script>
+    	new Vue({
+    		el: '#flex',
+    		data: {
+    			flex: data,
+    			style: {
+    				'align-items': 'flex-start',
+                    'justify-content': 'flex-start',
+                    'flex-direction': 'row',
+                    'flex-wrap': 'nowrap',
+                    'align-content': 'stretch'
+    			},
+                selfFlex: ['order', 'flex-grow', 'flex-shrink', 'flex-basis', 'align-self'],
+                pies: [
+                    {
+                        'order': '0',
+                        'flex-grow': '0',
+                        'flex-shrink': '1',
+                        'flex-basis': 'auto',
+                        'align-self': 'auto',
+                        'width': '200'
+                    }
+                ],
+                selectDom: '',
+                showSelf: false
+    		},
+    		methods: {
+    			changeFlex(type, value) {
+    				this.style[type] = value;
+    			},
+                addPip() {
+                    this.pies.push({'order': '0','flex-grow': '0','flex-shrink': '1','flex-basis': 'auto','align-self': 'auto', 'width': '200'});
+                    this.changeLine();
+                },
+                removePip() {
+                    this.pies.pop();
+                    this.changeLine();
+                },
+                changeLine() {
+                    var showlines = this.$refs;
+                    setTimeout(() => {
+                        for(var i in showlines) {
+                            if(showlines[i].length > 0) {
+                                this.pies[(parseInt(i) - 1)].width = showlines[i][0].parentNode.offsetWidth;
+                            }
+                        }
+                    }, 10);
+                },
+                _input(item, event) {
+                    setTimeout(() => {
+                        item.width = event.target.parentNode.offsetWidth;
+                        this.changeLine()
+                    }, 1000);
+                },
+                changeShowSelf() {
+                    this.showSelf = !this.showSelf
+                    setTimeout(() => {
+                        this.changeLine()
+                    }, 1000)
+                }
+    		}
+    	});
+
+    </script>
+</body>
+</html>

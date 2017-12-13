@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>	
+	html, body, div, ul, li{
+		margin: 0;
+		padding: 0;
+	}
+	html, body{
+		font-family: "Microsoft YaHei";
+	}
+	ul{list-style: none;}
+	.title{
+		padding: 10px 30px;
+		height: 21px;
+	}
+	.content a {
+		font-size: 14px;
+	    line-height: 3.14286;
+	    color: #000;
+	    position: relative;
+	    display: inline-block;
+	    padding: 0 10px;
+	    height: 41px;
+	    opacity: 1;
+	    text-decoration: none;
+	}
+	.justify {
+	    position: relative;
+	    padding: 0 22px;
+	    height: 41px;
+	    background-color: #FFF;
+	    text-align: justify;
+	    user-select: none;
+	}
+	.justify:after {
+	    content: '';
+	    width: 100%;
+	    display: inline-block;
+	    font-size: 0;
+	    line-height: 0;
+	}
+	.justify > li {
+	    display: inline-block;
+	    height: 41px;
+	}
+	.table {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+		box-sizing: border-box;
+		background-color: #FFF;
+	}
+	.table > li {
+		display: table-cell;
+		height: 41px;
+		text-align: center;
+	}
+	.flex {
+		display: flex;
+		padding: 0 22px;
+		justify-content: space-between;
+		background-color: #FFF;
+	}
+	</style>
+</head>
+<body>
+	<section id="justify">
+		<div class="content" v-for="item in list">
+			<div class="title">{{item.title}}</div>
+			<ul :class="item.className">
+				<li>
+					<a href="javascript:;">
+						<span>Apple</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>Mac</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>iPad</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>iPhone</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>Watch</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>Music</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>Music</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>M</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<span>M</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<script src="../vue.js"></script>
+	<script>
+		
+	let justify = new Vue({
+		el: '#justify',
+		data: {
+			list: [
+				{ title: 'text-align: justify + display: inline-block', className: 'justify' },
+				{ title: 'display: table', className: 'table' },
+				{ title: 'display: flex', className: 'flex' }
+			]
+		}
+	})
+
+	</script>
+</body>
+</html>

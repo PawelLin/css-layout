@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+	html,body,div,textarea,ul,li {
+		margin: 0;
+		padding: 0;
+	}
+	html,body {
+		height: 100%;
+		font-family: "Microsoft YaHei";
+	}
+	ul {
+		list-style: none;
+	}
+	#app{
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+	.nav > ul {
+		display: table;
+		width: 100%;
+		border-bottom: 1px solid #FFF;
+	}
+	.nav > ul > li {
+		display: table-cell;
+		padding: 10px;
+		text-align: center;
+		cursor: pointer;
+		transition: .3s all;
+		user-select: none;
+	}
+	.nav > ul > li:hover {
+		background-color: #FFF;
+	}
+	.nav-li-active {
+		background-color: #FFF;
+	}
+	.layout{
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.top{
+		position: relative;
+		margin: auto;
+		width: 70%;
+		height: 360px;
+		border: 1px solid #FFF;
+	}
+	.top > div{
+		overflow: hidden;
+	}
+	.top > header, .top > footer{
+		background-color: #ffeebb;
+	}
+	.top .left, .top .right{
+		background-color: #ccccff;
+	}
+	.top .middle{
+		background-color: #dddd88;
+	}
+	.bottom {
+		text-align: center;
+		border-top: 1px solid #FFF;
+		overflow-x: auto;
+	}
+	.bottom > div{
+		display: table-cell;
+		font-size: 14px;
+	}
+	.title {
+		padding: 5px 0;
+		text-align: center;
+	}
+	.textarea {
+		height: 150px;
+		background-color: transparent;
+		border: 1px solid #FFF;
+		resize: none;
+		outline: none;
+		font-family: "Microsoft YaHei";
+	}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<nav class="nav">
+			<ul>
+				<li @click="active = item.type" v-for="item in list" :class="{'nav-li-active': active === item.type}" :id="item.type">{{ item.title }}</li>
+			</ul>
+		</nav>
+		<div class="layout" v-show="active === 'table'">
+			<div class="top">
+				<header :style="tbmain[1].model | styleObject">header</header>
+				<div :style="tbmain[0].model | styleObject">
+					<div v-for="item in table" :style="item.model | styleObject" :class="item.className">
+						{{item.text}}
+					</div>
+				</div>
+				<footer :style="tbmain[2].model | styleObject">footer</footer>
+			</div>
+			<div class="bottom">
+				<div v-for="item in table">
+					<div class="title">{{item.text}}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+				<div v-for="item in tbmain">
+					<div class="title">{{item.text}}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="layout" v-show="active === 'shengbei'">
+			<div class="top">
+				<header :style="sbmain[1].model | styleObject">header</header>
+				<div :style="sbmain[0].model | styleObject">
+					<div v-for="item in shengbei" :style="item.model | styleObject" :class="item.className">
+						{{item.text}}
+					</div>
+				</div>
+				<footer :style="sbmain[2].model | styleObject">footer</footer>
+			</div>
+			<div class="bottom">
+				<div v-for="item in shengbei">
+					<div class="title">{{item.text}}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+				<div v-for="item in sbmain">
+					<div class="title">{{item.text}}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="layout" v-show="active === 'shuangfei'">
+			<div class="top">
+				<header :style="sfmain[2].model | styleObject">header</header>
+				<div :style="sfmain[1].model | styleObject">
+					<div v-for="item in shuangfei" :style="item.model | styleObject":class="item.className">
+						<span v-if="!item.hasChildren">{{item.text}}</span>
+						<div v-else :style="sfmain[0].model | styleObject">
+							middle
+							<div style="padding: 10px 20px;width: 100%;
+							height: 100%;">
+								middle-children
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer :style="sfmain[3].model | styleObject">footer</footer>
+			</div>
+			<div class="bottom">
+				<div v-for="item in shuangfei">
+					<div class="title">{{item.text}}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+				<div v-for="item in sfmain">
+					<div class="title">{{item.text}}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="layout" v-show="active === 'flex'">
+			<div class="top" :style="flexmain[1].model | styleObject">
+				<div id="flex" :style="flexmain[0].model | styleObject">
+					<div v-for="item in flex" :style="item.model | styleObject":class="item.className">
+						{{item.text}}
+					</div>
+				</div>
+				<header :style="flexmain[2].model | styleObject">header</header>
+				<footer :style="flexmain[3].model | styleObject">footer</footer>
+			</div>
+			<div class="bottom">
+				<div v-for="item in flex">
+					<div class="title">{{ item.text }}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+				<div v-for="item in flexmain">
+					<div class="title">{{ item.text }}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="layout" v-show="active === 'grid'">
+			<div class="top" :style="gridmain[1].model | styleObject">
+				<div id="grid" :style="gridmain[0].model | styleObject">
+					<div v-for="item in grid" :style="item.model | styleObject":class="item.className">
+						{{item.text}}
+					</div>
+				</div>
+				<header :style="gridmain[2].model | styleObject">header</header>
+				<footer :style="gridmain[3].model | styleObject">footer</footer>
+			</div>
+			<div class="bottom">
+				<div v-for="item in grid">
+					<div class="title">{{item.text}}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+				<div v-for="item in gridmain">
+					<div class="title">{{ item.text }}</div>
+					<textarea class="textarea" v-model="item.model" spellcheck="false"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../vue.js"></script>
+	<script>
+		
+	var app = new Vue({
+		el: '#app',
+		data: {
+			list: [
+				{ title: 'Table布局', type: 'table' },
+				{ title: '圣杯布局', type: 'shengbei' },
+				{ title: '双飞翼布局', type: 'shuangfei' },
+				{ title: 'Flex布局', type: 'flex' },
+				{ title: 'Grid布局', type: 'grid' }
+			],
+			active: 'table',
+			tbmain: [
+				{ model: '', text: 'main' },
+				{ model: '', text: 'header' },
+				{ model: '', text: 'footer' }
+			],
+			table: [
+				{ model: '', text: 'left', className: 'left' },
+				{ model: '', text: 'middle', className: 'middle' },
+				{ model: '', text: 'right', className: 'right' }
+			],
+			sbmain: [
+				{ model: '', text: 'main' },
+				{ model: '', text: 'header' },
+				{ model: '', text: 'footer' }
+			],
+			shengbei: [
+				{ model: '', text: 'middle', className: 'middle' },
+				{ model: '', text: 'left', className: 'left' },
+				{ model: '', text: 'right', className: 'right' }
+			],
+			sfmain: [
+				{ model: '', text: 'middle-children' },
+				{ model: '', text: 'main' },
+				{ model: '', text: 'header' },
+				{ model: '', text: 'footer' }
+			],
+			shuangfei: [
+				{ model: '', text: 'middle', className: 'middle', hasChildren: true },
+				{ model: '', text: 'left', className: 'left'  },
+				{ model: '', text: 'right', className: 'right'  }
+			],
+			flexmain: [
+				{ model: '', text: 'main' },
+				{ model: '', text: 'contain' },
+				{ model: '', text: 'header' },
+				{ model: '', text: 'footer' }
+			],
+			flex: [
+				{ model: '', text: 'middle', className: 'middle'  },
+				{ model: '', text: 'left', className: 'left'  },
+				{ model: '', text: 'right', className: 'right'  }
+			],
+			gridmain: [
+				{ model: '', text: 'main' },
+				{ model: '', text: 'contain' },
+				{ model: '', text: 'header' },
+				{ model: '', text: 'footer' }
+			],
+			grid: [
+				{ model: '', text: 'middle', className: 'middle'  },
+				{ model: '', text: 'left', className: 'left'  },
+				{ model: '', text: 'right', className: 'right'  }
+			]
+		},
+		filters: {
+  			styleObject: function (model) {
+    			if (!model) return {}
+    			let preModel = model.substring(0, model.lastIndexOf(';') + 1)
+    			let _model = model.replace(/:/g, '":"').replace(/\n/g, '').replace(/;/g,'","')
+				_model = _model.substring(0, _model.length - 2)
+				try {
+					return JSON.parse(`{"${_model}}`)
+				} catch(error) {
+					_model = preModel.replace(/:/g, '":"').replace(/\n/g, '').replace(/;/g,'","')
+					_model = _model.substring(0, _model.length - 2)
+					try {
+						return JSON.parse(`{"${_model}}`)
+					} catch(err) {
+						return {}
+					}
+				}
+  			}
+		},
+		created() {
+			this.init()
+		},
+		methods: {
+			init() {
+				this.table[0].model = 'display: table-cell;\nwidth: 100px;\n'
+				this.table[1].model = 'display: table-cell;\n'
+				this.table[2].model = 'display: table-cell;\nwidth: 100px;\n'
+				this.tbmain[0].model = 'display: table;\npadding: 30px 0;\nwidth: 100%;\nheight: 100%;\n'
+				this.tbmain[1].model = 'position: absolute;\ntop: 0;\nwidth: 100%;\nheight: 30px;\n'
+				this.tbmain[2].model = 'position: absolute;\nbottom: 0;\nwidth: 100%;\nheight: 30px;\n'
+
+				this.shengbei[0].model = 'float: left;\nwidth: 100%;\nheight: 100%;\n'
+				this.shengbei[1].model = 'float: left;\nmargin-left: -100%;\nposition: relative;\nleft: -100px;\nwidth: 100px;\nheight: 100%;\n'
+				this.shengbei[2].model = 'float:left;\nmargin-left: -100px;\nposition: relative;\nright: -100px;\nwidth: 100px;\nheight: 100%;\n'
+				this.sbmain[0].model = 'padding: 30px 100px;\nheight: 100%;\nbox-sizing: border-box;\n'
+				this.sbmain[1].model = 'position: absolute;\ntop: 0;\nwidth: 100%;\nheight: 30px;\n'
+				this.sbmain[2].model = 'position: absolute;\nbottom: 0;\nwidth: 100%;\nheight: 30px;\n'
+
+				this.shuangfei[0].model = 'float: left;\nwidth: 100%;\nheight: 100%;\n'
+				this.shuangfei[1].model = 'float:left;\nmargin-left: -100%;\nwidth: 100px;\nheight: 100%;\n'
+				this.shuangfei[2].model = 'float:left;\nmargin-left: -100px;\nwidth: 100px;\nheight: 100%;\n'
+				this.sfmain[0].model = 'margin: 0 100px;\nheight: 100%;\n'
+				this.sfmain[1].model = 'padding: 30px 0;\nheight: 100%;\nbox-sizing: border-box;\n'
+				this.sfmain[2].model = 'position: absolute;\ntop: 0;\nwidth: 100%;\nheight: 30px;\n'
+				this.sfmain[3].model = 'position: absolute;\nbottom: 0;\nwidth: 100%;\nheight: 30px;\n'
+
+				this.flex[0].model = 'flex: 1;\n'
+				this.flex[1].model = 'width: 100px;\norder: -1;\n'
+				this.flex[2].model = 'width: 100px;\norder: 2;\n'
+				this.flexmain[0].model = 'flex: 1;\ndisplay: flex;\n'
+				this.flexmain[1].model = 'display: flex;\nflex-direction: column;\n'
+				this.flexmain[2].model = 'order: -1;\nheight: 30px;\n'
+				this.flexmain[3].model = 'height: 30px;\n'
+
+				this.grid[0].model = ''
+				this.grid[1].model = 'order: -1;\n'
+				this.grid[2].model = ''
+				this.gridmain[0].model = 'display: grid;\ngrid-template-columns: 100px auto 100px;\n'
+				this.gridmain[1].model = 'display: grid;\ngrid-template-rows: 30px auto 30px;\n'
+				this.gridmain[2].model = 'order: -1;\n'
+				this.gridmain[3].model = ''
+			}
+		}
+	})
+
+	</script>
+</body>
+</html>
