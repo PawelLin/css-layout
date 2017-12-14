@@ -27,9 +27,9 @@
 		background-color: #EEE;
 	}
 	header {
+		padding-left: 30px;
 		height: 50px;
 		line-height: 50px;
-		text-align: center;
 		border-bottom: 1px solid #FFF;
 	}
 	#container {
@@ -71,21 +71,21 @@
 		</header>
 		<div id="container">
 			<ul>
-				<li>
-					<a onclick="views(this, 'summary')" href="javascript:;">概念</a>
+				<li class="menu-li-active">
+					<a onclick="views(this, 'summary')" href="javascript:;">演变史</a>
 				</li>
 				<li>
 					<a onclick="views(this, 'two')" href="javascript:;">两栏布局</a>
 				</li>
-				<li class="menu-li-active">
+				<li>
 					<a onclick="views(this, 'three')" href="javascript:;">三栏布局</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a onclick="views(this, 'high')" href="javascript:;">等高布局</a>
-				</li>
-				<li>
+				</li> -->
+				<!-- <li>
 					<a onclick="views(this, 'float')" href="javascript:;">浮动布局</a>
-				</li>
+				</li> -->
 				<li>
 					<a onclick="views(this, 'justify')" href="javascript:;">两端对齐布局</a>
 				</li>
@@ -97,7 +97,7 @@
 				</li>
 			</ul>
 			<div class="content">
-				<iframe id="iframe" src="views/masonry.html"></iframe>
+				<iframe id="iframe" src="views/summary.html"></iframe>
 			</div>
 		</div>
 	</div>

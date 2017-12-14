@@ -8,6 +8,9 @@
 		margin: 0;
 		padding: 0;
 	}
+	html,body{
+		height: 100%;
+	}
 	.contain{
 		padding: 10px;
 	}
@@ -24,20 +27,35 @@
 		border: 1px solid #FFF;
 		border-bottom: none;
 	}
+	.title > button{
+		float: right;
+		padding: 1px 5px;
+		border: 1px solid #FFF;
+		background-color: transparent;
+		cursor: pointer;
+		outline: none;
+	}
+	.title > button:active{
+		transform: scale(0.9);
+	}
 	.column{
 		padding: 10px;
 		border: 1px solid #FFF;
-        column-count: 9;
+        column-count: 5;
       	column-gap: 1em;
-      	column-width: 30px;
 	}
 	.column > .item{
-      	column-break-inside: avoid;
+      	-webkit-column-break-inside: avoid;
+      	margin-bottom: 10px;
+      	border: 1px solid #CCC;
+      	font-size: 0;
 	}
 	.column > .item > img{
+		position: relative;
 		width: 100%;
-		margin-bottom:10px;
-	}
+		border: 5px solid #FFF;
+		box-sizing: border-box;
+	}	
 	</style>
 </head>
 <body>
@@ -45,28 +63,50 @@
 		<div class="left">
 			<div class="title">
 				column瀑布流
+				<button onclick="add()">添加</button>
 			</div>
 			<div class="column">
 				<div class="item">
-					<img src="../img/1.gif">
+					<img src="http://cued.xunlei.com/demos/publ/img/P_001.jpg"	>
 				</div>
 				<div class="item">
-					<img src="../img/2.gif">
+					<img src="http://cued.xunlei.com/demos/publ/img/P_002.jpg">
 				</div>
 				<div class="item">
-					<img src="../img/4.jpg">
+					<img src="http://cued.xunlei.com/demos/publ/img/P_003.jpg">
 				</div>
 				<div class="item">
-					<img src="../img/3.jpg">
+					<img src="http://cued.xunlei.com/demos/publ/img/P_004.jpg">
 				</div>
 				<div class="item">
-					<img src="../img/2.gif">
-				</div>
-				<div class="item">
-					<img src="../img/6.jpg">
+					<img src="http://cued.xunlei.com/demos/publ/img/P_005.jpg">
 				</div>
 			</div>
 		</div>
 	</section>
+	<script>
+	let body = document.querySelector('body')
+	let bodyHeight = body.offsetHeight + 3
+	let containHeight = 0
+	body.onscroll = function() {
+		containHeight = document.querySelector('.contain').offsetHeight
+		if((containHeight - body.scrollTop) < bodyHeight){
+			add()
+		}
+	}
+
+	function add() {
+		let column = document.querySelector('.column')
+		let itemLength = column.querySelectorAll('.item').length + 1
+		let div = document.createElement('div')
+		let img = document.createElement('img')
+		div.className = 'item'
+		itemLength  = itemLength < 10 ? `00${itemLength}` : (itemLength < 100 ? `0${itemLength}` : itemLength) 
+		img.src = `http://cued.xunlei.com/demos/publ/img/P_${itemLength}.jpg`
+		div.appendChild(img)
+		column.appendChild(div)
+	}
+
+	</script>
 </body>
 </html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+	
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.container{
+		padding: 10px;
+	}
+	.container > .item > div{
+		float: left;
+	}
+	.container > .item:after{
+		content: '';
+		display: inline-block;
+		width: 100%;
+	}
+	.container > .item > .title{
+		padding: 0 20px;
+		width: 125px;
+		line-height: 180px;
+	}
+	.table > .main{
+		width: 600px;
+		height: 180px;
+	}
+	.table > .main > table {
+		width: 100%;
+		height: 100%;
+		border-top: 2px solid #FFF;
+		border-right: 2px solid #FFF;
+		box-shadow: 0px 0px 3px #999;
+	}
+	.table > .main > table td {
+		border-bottom: 2px solid #FFF;
+		border-left: 2px solid #FFF;
+		box-shadow: 0px 0px 3px #999 inset; 
+	}
+	.regular > .main{
+		position: relative;
+		width: 600px;
+		height: 180px;
+		text-align: center;
+	}
+	.regular > .main > header{
+		position: absolute;
+		top:0;
+		left: 0;
+		width: 100%;
+		height: 30px;
+		border: 2px solid #FFF;
+		line-height: 30px;
+	}
+	.regular > .main > .contain{
+		position: absolute;
+		top: 32px;
+		left: 0;
+		width: 100%;
+		height: 116px;
+		border-left: 2px solid #FFF;
+		border-right: 2px solid #FFF;
+		line-height: 116px;
+	}
+	.regular > .main > .contain > .left {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 80px;
+		height: 100%;
+		border-right: 2px solid #FFF;
+	}
+	.regular > .main > .contain > .right {
+		position: absolute;
+		top: 0;
+		left: 82px;
+		width: 514px;
+		height: 100%;
+	}
+	.regular > .main > footer{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 30px;
+		border: 2px solid #FFF;
+		line-height: 30px;
+	}
+	.regular > .main > .fixed {
+		position: absolute;
+		top: 80px;
+		right: -4px;
+		width: 50px;
+		height: 25px;
+		border: 2px solid #FFF;
+		line-height: 25px;
+	}
+	.float > .main:after{
+		content: '';
+		display: inline-block;
+		width: 100%;
+	}
+	.float > .main > div{
+		float: left;
+	}
+	.float > .main > .origin{
+		padding: 10px;
+		width: 200px;
+		height: 160px;
+		border: 2px solid #FFF;
+	}
+	.float > .main > .origin > img{
+		float: left;
+		margin-right: 8px;
+		width: 160px;
+	}
+	.float > .main > .origin > p {
+		font-size: 12px;
+		text-align: justify;
+	}
+	.float > .main > .fixed{
+		margin-left: 10px;
+		text-align: center;
+	}
+	.float > .main > .fixed > .top {
+		width: 320px;
+		height: 30px;
+		border: 2px solid #FFF;
+		line-height: 30px;
+	}
+	.float > .main > .fixed > .middle {
+		height: 148px;
+		line-height: 148px;
+		border: 2px solid #FFF;
+		border-top: none;
+	}
+	.float > .main > .fixed > .middle:after {
+		content: '';
+		display: inline-block;
+		width: 100%;
+	}
+	.float > .main > .fixed > .middle > div {
+		float: left;
+	}
+	.float > .main > .fixed > .middle > .left {
+		width: 100px;
+		height: 100%;
+		border-right: 2px solid #FFF;
+	}
+	.float > .main > .fixed > .middle > .middle {
+		margin-left: 10px;
+		margin-right: 10px;
+		width: 80px;
+		height: 100%;
+		border-left: 2px solid #FFF;
+		border-right: 2px solid #FFF;
+	}
+	.float > .main > .fixed > .middle > .right {
+		border-left: 2px solid #FFF;
+		width: 112px;
+		height: 100%;
+	}
+	.float > .main > .fluid{
+		margin-left: 10px;
+		text-align: center;
+	}
+	.float > .main > .fluid > .top {
+		width: 320px;
+		height: 30px;
+		border: 2px solid #FFF;
+		line-height: 30px;
+	}
+	.float > .main > .fluid > .middle {
+		height: 148px;
+		line-height: 148px;
+		border: 2px solid #FFF;
+		border-top: none;
+	}
+	.float > .main > .fluid > .middle:after {
+		content: '';
+		display: inline-block;
+		width: 100%;
+	}
+	.float > .main > .fluid > .middle > div {
+		float: left;
+	}
+	.float > .main > .fluid > .middle > .left {
+		width: 30%;
+		height: 100%;
+		border-right: 2px solid #FFF;
+	}
+	.float > .main > .fluid > .middle > .middle {
+		margin-left: 4%;
+		margin-right: 4%;
+		width: 16%;
+		height: 100%;
+		border-left: 2px solid #FFF;
+		border-right: 2px solid #FFF;
+	}
+	.float > .main > .fluid > .middle > .right {
+		border-left: 2px solid #FFF;
+		width: 36%;
+		height: 100%;
+	}
+	.flex > .main {
+		display: flex;
+		flex-direction: column;
+		width: 600px;
+		height: 180px;
+		border: 2px solid #FFF;
+	}
+	.flex > .main > .top {
+		height: 30px;
+		border-bottom: 2px solid #FFF;
+	}
+	.flex > .main > .middle{
+		display: flex;
+		flex: 1;
+	}
+	.flex > .main > .middle > .left{
+		order: -1;
+		width: 150px;
+		border-right: 2px solid #FFF;
+	}
+	.flex > .main > .middle > .right{
+		flex: 1;
+	}
+	.grid > .main {
+		display: grid;
+		grid-template-rows: 30px auto 30px;
+		width: 600px;
+		height: 180px;
+		border: 2px solid #FFF;
+	}
+	.grid > .main > .middle{
+		display: grid;
+		grid-template-columns: 120px auto 80px;
+		border-top: 2px solid #FFF;
+		border-bottom: 2px solid #FFF;
+	}
+	.grid > .main > .middle > .left{
+		order: -1;
+	}
+	.grid > .main > .middle > .middle{
+		border-left: 2px solid #FFF;
+		border-right: 2px solid #FFF;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="item table">
+			<div class="title">表格布局</div>
+			<div class="main">
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="4"></td>
+						<td colspan="4"></td>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<td rowspan="4" colspan="2"></td>
+						<td colspan="2"></td>
+						<td colspan="2"></td>
+						<td colspan="2"></td>
+						<td rowspan="2" colspan="4"></td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+						<td rowspan="3" colspan="4" align="center">
+							table layout
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+						<td></td>
+						<td></td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+						<td colspan="2"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td width="49"></td>
+						<td></td>
+					</tr>
+				</table>
+				
+			</div>
+		</div>
+		<div class="item regular">
+			<div class="title">固定布局</div>
+			<div class="main">
+				<header>absolute</header>
+				<div class="contain">
+					<div class="left">absolute</div>
+					<div class="right">absolute</div>
+				</div>
+				<footer>absolute</footer>
+				<div class="fixed">fixed</div>
+			</div>
+		</div>
+		<div class="item float">
+			<div class="title">浮动布局</div>
+			<div class="main">
+				<div class="origin">
+					<img src="http://cued.xunlei.com/demos/publ/img/P_003.jpg">
+					<p>字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字</p>
+				</div>
+				<div class="fixed">
+					<div class="top">
+						960gs [grid system]
+						<span style="float: right;padding-right: 10px;">320px</span>
+					</div>
+					<div class="middle">
+						<div class="left">100px</div>
+						<div class="middle">80px</div>
+						<div class="right">112px</div>
+					</div>
+				</div>
+				<div class="fluid">
+					<div class="top">
+						流体(自适应)布局
+					</div>
+					<div class="middle">
+						<div class="left">30%</div>
+						<div class="middle">16%</div>
+						<div class="right">36%</div>
+					</div>
+					<div class="bottom"></div>
+				</div>
+			</div>
+		</div>
+		<div class="item flex">
+			<div class="title">Flexbox布局</div>
+			<div class="main">
+				<div class="top">
+					height: 30px
+				</div>
+				<div class="middle">
+					<div class="right">
+						flex: 1
+					</div>
+					<div class="left">
+						width: 150px<br>
+						order: -1
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="item grid">
+			<div class="title">网格系统</div>
+			<div class="main">
+				<div class="top">
+					height: 30px
+				</div>
+				<div class="middle">
+					<div class="middle">
+						width: auto<br/>
+						height: auto
+					</div>
+					<div class="left">
+						width: 120px<br/>
+						height: auto
+					</div>
+					<div class="right">
+						width: 60px<br/>
+						height: auto
+					</div>
+				</div>
+				<div class="bottom">
+					height: 30px
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
