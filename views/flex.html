@@ -35,7 +35,7 @@
                 </table>
             </div>
 	    </div>
-	    <div class="container" :style="style" :class="{'_container': showSelf}">
+	    <div class="container" :style="style" :class="{'_container': showSelf}" v-cloak>
 	        <div class="first-face" :class="{'_first-face': showSelf}" v-for="(item, index) in pies" 
             :style="{
                 'order': item['order'],
@@ -103,25 +103,27 @@
                 },
                 changeLine() {
                     var showlines = this.$refs;
-                    setTimeout(() => {
-                        for(var i in showlines) {
-                            if(showlines[i].length > 0) {
-                                this.pies[(parseInt(i) - 1)].width = showlines[i][0].parentNode.offsetWidth;
+                    // setTimeout(() => {
+                        this.$nextTick(() => {
+                            for(var i in showlines) {
+                                if(showlines[i].length > 0) {
+                                    this.pies[(parseInt(i) - 1)].width = showlines[i][0].parentNode.offsetWidth;
+                                }
                             }
-                        }
-                    }, 10);
+                        })
+                    // }, 10);
                 },
                 _input(item, event) {
-                    setTimeout(() => {
+                    // setTimeout(() => {
                         item.width = event.target.parentNode.offsetWidth;
                         this.changeLine()
-                    }, 1000);
+                    // }, 1000);
                 },
                 changeShowSelf() {
                     this.showSelf = !this.showSelf
-                    setTimeout(() => {
+                    // setTimeout(() => {
                         this.changeLine()
-                    }, 1000)
+                    // }, 1000)
                 }
     		}
     	});

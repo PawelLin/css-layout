@@ -55,6 +55,7 @@
 		width: 100%;
 		border: 5px solid #FFF;
 		box-sizing: border-box;
+		transition: 1s all;
 	}	
 	</style>
 </head>
@@ -86,7 +87,7 @@
 	</section>
 	<script>
 	let body = document.querySelector('body')
-	let bodyHeight = body.offsetHeight + 3
+	let bodyHeight = body.offsetHeight + 100
 	let containHeight = 0
 	body.onscroll = function() {
 		containHeight = document.querySelector('.contain').offsetHeight
