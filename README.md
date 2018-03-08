@@ -21,11 +21,11 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ### 二、flex容器属性
 * flex-direction      ( 确定主轴线方向 )<br>
 row(默认) | row-reverse：水平方向 (左右起点)<br>
-column | column-reverse: 垂直方向 (上下起点)
+column | column-reverse: 垂直方向 (上下起点)<br>
 * flex-wrap ( 超出是否换行 )<br>
     nowrap：不换行<br>
     wrap：换行<br>
-    wrap-reverse：倒着换行
+    wrap-reverse：倒着换行<br>
 * flex-flow ( flex-direction + flex-wrap )
 * justify-content   ( 子项目在主轴线上的对齐方式 )<br>
 * align-items   ( 子项目在交叉轴上的对齐方式 )
