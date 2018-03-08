@@ -53,7 +53,11 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ``
 .box { align-items: stretch | flex-start | flex-end | center | baseline }
 ``<br>*依次为占满父容器高度、交叉轴起点对齐、终点对齐、中心对齐、子项目第一行文字基线对齐*<br>
-![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/1stretch.png)
+![flex-shrink](https://pawellin.github.io/css-layout/img/1flex-start.png)<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/1flex-end.png)
+![flex-shrink](https://pawellin.github.io/css-layout/img/1center.png)<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/1baseline.png)<br>
 
 * **align-content ( 多根轴线的对齐方式 )**<br>
 ``
