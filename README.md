@@ -45,12 +45,30 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ``
 
 ### 三、flex项目属性
-* order(排列顺序)
-* flex-grow(放大比例)
-* flex-shrink(缩小比例)
-* flex-basis()
-* flex ( flex-grow + flex-shrink + flex-basis )
-* align-self (自身对齐方式)
+* order(排列顺序)<br>
+`
+.item { order: <Integer || 0> }
+`
+* flex-grow(放大比例)<br>
+`
+.item { flex-grow: <number || 0> }
+`
+* flex-shrink(缩小比例)<br>
+`
+.item { flex-shrink: <number || 1> }
+`
+* flex-basis()<br>
+`
+.item { flex-basis: <length || auto> }
+`
+* flex ( flex-grow + flex-shrink + flex-basis )<br>
+`
+.item { flex: (<flex-grow> <flex-shrink> <flex-basis>) || auto }
+`
+* align-self (自身对齐方式)<br>
+`
+.item { align-self: auto | flex-start | flex-end | center | baseline | stretch; }
+`
 
 ### 四、flex实例
 
