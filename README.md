@@ -73,7 +73,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `<br>*缺少空间按所有各项目的缩放比例分配*<br>
 ![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
 
-* **flex-basis()**<br>
+* **flex-basis(分配多余空间前占主轴线的空间)**<br>
 `
 .item { flex-basis: <length || auto> }
 `<br>
