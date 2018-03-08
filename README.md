@@ -27,12 +27,12 @@ flex布局基于主轴线及交叉轴进行排列布局，有父容器container�
 * align-content ( 多根轴线的对齐方式 )
 
 ### 三、flex项目属性
-* order
-* flex-grow
-* flex-shrink
-* flex-basis
-* flex
-* align-self
+* order(排列顺序)
+* flex-grow(放大比例)
+* flex-shrink(缩小比例)
+* flex-basis()
+* flex ( flex-grow + flex-shrink + flex-basis )
+* align-self (自身对齐方式)
 
 ### 四、flex实例
 
