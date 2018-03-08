@@ -49,7 +49,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `
 .item { order: <Integer || 0> }
 `<br>*数值越小，排列越靠近主线轴的起点*
-
+![Froad](https://pawellin.github.io/css-layout/img/order.png)<br>
 
 * **flex-grow(放大比例)**<br>
 `
