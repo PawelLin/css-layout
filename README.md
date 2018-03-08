@@ -49,20 +49,26 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `
 .item { order: <Integer || 0> }
 `<br>*数值越小，排列越靠近主线轴的起点*<br>
-![Froad](https://pawellin.github.io/css-layout/img/order.png)<br>
+![order](xxxx)<br>
 
 * **flex-grow(放大比例)**<br>
 `
 .item { flex-grow: <number || 0> }
 `<br>*剩余空间按所有各项目的放大比例分配*<br>
+![flex-grow](xxxx)<br>
+
 * **flex-shrink(缩小比例)**<br>
 `
 .item { flex-shrink: <number || 1> }
 `<br>*缺少空间按所有各项目的缩放比例分配*<br>
+![flex-shrink](xxxx)<br>
+
 * **flex-basis()**<br>
 `
 .item { flex-basis: <length || auto> }
-`
+`<br>
+![flex-basis](xxxx)<br>
+
 * **flex ( flex-grow + flex-shrink + flex-basis )**<br>
 `
 .item { flex: (<flex-grow> <flex-shrink> <flex-basis>) || auto }
@@ -71,6 +77,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `
 .item { align-self: auto | flex-start | flex-end | center | baseline | stretch }
 `<br>*默认auto值继承父容器align-items的值，设置为其他值可覆盖继承值*<br>
+![align-self](xxxx)<br>
 
 ### 四、flex实例
 * 管理系统简易布局
