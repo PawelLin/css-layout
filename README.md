@@ -59,7 +59,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `
 .item { order: <Integer || 0> }
 `<br>*数值越小，排列越靠近主线轴的起点*<br>
-![order](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+![order](https://pawellin.github.io/css-layout/img/order.png)<br>
 
 * **flex-grow(放大比例)**<br>
 `
@@ -71,13 +71,14 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `
 .item { flex-shrink: <number || 1> }
 `<br>*缺少空间按所有各项目的缩放比例分配*<br>
-![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/flex-shrink.png)<br>
 
 * **flex-basis(分配多余空间前占主轴线的空间)**<br>
 `
 .item { flex-basis: <length || auto> }
 `<br>
-![flex-basis](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+![flex-basis](https://pawellin.github.io/css-layout/img/flex-basis1.png)<br>
+![flex-basis](https://pawellin.github.io/css-layout/img/flex-basis2.png)<br>
 
 * **flex ( flex-grow + flex-shrink + flex-basis )**<br>
 `
@@ -87,7 +88,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `
 .item { align-self: auto | flex-start | flex-end | center | baseline | stretch }
 `<br>*默认auto值继承父容器align-items的值，设置为其他值可覆盖继承值*<br>
-![align-self](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+![align-self](https://pawellin.github.io/css-layout/img/align-self.png)<br>
 
 ### 四、flex实例
 * 管理系统简易布局
