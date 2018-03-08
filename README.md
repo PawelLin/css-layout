@@ -59,7 +59,12 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ``
 .box { align-content: flex-start | flex-end | center | space-between | space-around }
 ``
-![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/stretch.png)
+![flex-shrink](https://pawellin.github.io/css-layout/img/sflex-start.png)<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/sflex-end.png)
+![flex-shrink](https://pawellin.github.io/css-layout/img/scenter.png)<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/sspace-between.png)
+![flex-shrink](https://pawellin.github.io/css-layout/img/sspace-around.png)<br>
 
 ### 三、flex项目属性
 * **order(排列顺序)**<br>
