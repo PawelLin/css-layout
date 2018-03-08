@@ -16,6 +16,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
     display: flex;
 }
 ``
+设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
 
 ### 二、flex容器属性
 * flex-direction      ( 确定主轴线方向 )<br>
