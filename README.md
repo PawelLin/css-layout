@@ -9,7 +9,7 @@
 
 ### 一、布局原理及组成
 
-flex布局基于主轴线及交叉轴进行排列布局，有父容器container及子项目组成。<br>
+flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴线方向改变，始终与主轴线相互垂直。有父容器container及子项目组成。<br>
 ![Froad](https://www.w3.org/TR/css-flexbox-1/images/flex-direction-terms.svg)<br>
 ``
 .container {
