@@ -19,27 +19,27 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
 
 ### 二、flex容器属性
-* flex-direction( 确定主轴线方向 )
+* flex-direction( 确定主轴线方向 )<br>
 ``
 .box { flex-direction: row | row-reverse | column | column-reverse }
 ``
-* flex-wrap ( 超出是否换行 )
+* flex-wrap ( 超出是否换行 )<br>
 ``
 .box { flex-wrap: nowrap | wrap | wrap-reverse }
 ``
-* flex-flow ( flex-direction + flex-wrap )
+* flex-flow ( flex-direction + flex-wrap )<br>
 ``
 .box { flex-flow: <flex-direction> <flex-wrap> }
 ``
-* justify-content   ( 子项目在主轴线上的对齐方式 )
+* justify-content   ( 子项目在主轴线上的对齐方式 )<br>
 ``
 .box { justify-content: flex-start | flex-end | center | space-between | space-around }
 ``
-* align-items   ( 子项目在交叉轴上的对齐方式 )
+* align-items   ( 子项目在交叉轴上的对齐方式 )<br>
 ``
 .box { align-items: stretch | flex-start | flex-end | center | baseline }
 ``
-* align-content ( 多根轴线的对齐方式 )
+* align-content ( 多根轴线的对齐方式 )<br>
 ``
 .box { align-content: flex-start | flex-end | center | space-between | space-around }
 ``
@@ -49,23 +49,23 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `
 .item { order: <Integer || 0> }
 `
-* flex-grow(放大比例)
+* flex-grow(放大比例)<br>
 `
 .item { flex-grow: <number || 0> }
 `
-* flex-shrink(缩小比例)
+* flex-shrink(缩小比例)<br>
 `
 .item { flex-shrink: <number || 1> }
 `
-* flex-basis()
+* flex-basis()<br>
 `
 .item { flex-basis: <length || auto> }
 `
-* flex ( flex-grow + flex-shrink + flex-basis )
+* flex ( flex-grow + flex-shrink + flex-basis )<br>
 `
 .item { flex: (<flex-grow> <flex-shrink> <flex-basis>) || auto }
 `
-* align-self (自身对齐方式)
+* align-self (自身对齐方式)<br>
 `
 .item { align-self: auto | flex-start | flex-end | center | baseline | stretch }
 `
