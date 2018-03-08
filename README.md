@@ -23,51 +23,61 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ``
 .box { flex-direction: row | row-reverse | column | column-reverse }
 ``<br>*依次为水平左右方向，垂直上下方向*<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+
 * **flex-wrap ( 超出是否换行 )**<br>
 ``
 .box { flex-wrap: nowrap | wrap | wrap-reverse }
 ``<br>*超过一行时，换行才有效*<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+
 * **flex-flow ( flex-direction + flex-wrap )**<br>
 ``
 .box { flex-flow: <flex-direction> <flex-wrap> }
 ``
+
 * **justify-content   ( 子项目在主轴线上的对齐方式 )**<br>
 ``
 .box { justify-content: flex-start | flex-end | center | space-between | space-around }
 ``<br>*依次为主轴线起点对齐、终点对齐、居中对齐、两端对齐、两端间隔相等对齐*<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+
 * **align-items   ( 子项目在交叉轴上的对齐方式 )**<br>
 ``
 .box { align-items: stretch | flex-start | flex-end | center | baseline }
 ``<br>*依次为占满父容器高度、交叉轴起点对齐、终点对齐、中心对齐、子项目第一行文字基线对齐*<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
+
 * **align-content ( 多根轴线的对齐方式 )**<br>
 ``
 .box { align-content: flex-start | flex-end | center | space-between | space-around }
 ``
+![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
 
 ### 三、flex项目属性
 * **order(排列顺序)**<br>
 `
 .item { order: <Integer || 0> }
 `<br>*数值越小，排列越靠近主线轴的起点*<br>
-![order](xxxx)<br>
+![order](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
 
 * **flex-grow(放大比例)**<br>
 `
 .item { flex-grow: <number || 0> }
 `<br>*剩余空间按所有各项目的放大比例分配*<br>
-![flex-grow](xxxx)<br>
+![flex-grow](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
 
 * **flex-shrink(缩小比例)**<br>
 `
 .item { flex-shrink: <number || 1> }
 `<br>*缺少空间按所有各项目的缩放比例分配*<br>
-![flex-shrink](xxxx)<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
 
 * **flex-basis()**<br>
 `
 .item { flex-basis: <length || auto> }
 `<br>
-![flex-basis](xxxx)<br>
+![flex-basis](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
 
 * **flex ( flex-grow + flex-shrink + flex-basis )**<br>
 `
@@ -77,7 +87,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `
 .item { align-self: auto | flex-start | flex-end | center | baseline | stretch }
 `<br>*默认auto值继承父容器align-items的值，设置为其他值可覆盖继承值*<br>
-![align-self](xxxx)<br>
+![align-self](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
 
 ### 四、flex实例
 * 管理系统简易布局
