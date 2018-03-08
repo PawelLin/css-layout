@@ -19,7 +19,7 @@ flex布局基于主轴线及交叉轴进行排列布局，有父容器container�
 
 ### 二、flex容器属性
 * flex-direction      ( 确定主轴线方向 )<br>
-![Froad](http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png)
+![Froad](https://css-tricks.com/wp-content/uploads/2013/04/flex-direction2.svg)
 * flex-wrap ( 超出是否换行 )
 * flex-flow ( flex-direction + flex-wrap )
 * justify-content   ( 子项目在主轴线上的对齐方式 )
