@@ -57,7 +57,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 
 * **align-content ( 多根轴线的对齐方式 )**<br>
 ``
-.box { align-content: flex-start | flex-end | center | space-between | space-around }
+.box { align-content: stretch | flex-start | flex-end | center | space-between | space-around }
 ``
 ![flex-shrink](https://pawellin.github.io/css-layout/img/stretch.png)
 ![flex-shrink](https://pawellin.github.io/css-layout/img/sflex-start.png)<br>
