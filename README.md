@@ -31,7 +31,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ``<br>*超过一行时，换行才有效*<br>
 ![flex-shrink](https://pawellin.github.io/css-layout/img/nowrap.png)<br>
 ![flex-shrink](https://pawellin.github.io/css-layout/img/wrap.png)<br>
-![flex-shrink](https://pawellin.github.io/css-layout/img/-reverse.png)<br>
+![flex-shrink](https://pawellin.github.io/css-layout/img/wrap-reverse.png)<br>
 
 * **flex-flow ( flex-direction + flex-wrap )**<br>
 ``
