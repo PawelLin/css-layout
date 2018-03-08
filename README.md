@@ -67,7 +67,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 `
 * align-self (自身对齐方式)<br>
 `
-.item { align-self: auto | flex-start | flex-end | center | baseline | stretch; }
+.item { align-self: auto | flex-start | flex-end | center | baseline | stretch }
 `
 
 ### 四、flex实例
