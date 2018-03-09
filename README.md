@@ -88,25 +88,32 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ![flex-shrink](https://pawellin.github.io/css-layout/img/sspace-around.png)<br>
 
 ### 三、flex项目属性
-* **order(排列顺序)**<br>
+* **order**
+* **flex-grow**
+* **flex-shrink**
+* **flex-basis**
+* **flex**
+* **align-self**
+
+**3. 1 order(排列顺序)**<br>
 `
 .item { order: <Integer || 0> }
 `<br>*数值越小，排列越靠近主线轴的起点*<br>
 ![order](https://pawellin.github.io/css-layout/img/order.png)<br>
 
-* **flex-grow(放大比例)**<br>
+**3. 2 flex-grow(放大比例)**<br>
 `
 .item { flex-grow: <number || 0> }
 `<br>*剩余空间按所有各项目的放大比例分配*<br>
 ![flex-grow](https://pawellin.github.io/css-layout/img/flex-grow.png)<br>
 
-* **flex-shrink(缩小比例)**<br>
+**3. 3 flex-shrink(缩小比例)**<br>
 `
 .item { flex-shrink: <number || 1> }
 `<br>*缺少空间按所有各项目的缩放比例分配*<br>
 ![flex-shrink](https://pawellin.github.io/css-layout/img/flex-shrink.png)<br>
 
-* **flex-basis(分配多余空间前占主轴线的空间)**<br>
+**3. 4 flex-basis(分配多余空间前占主轴线的空间)**<br>
 `
 .item { flex-basis: <length || auto> }
 `<br>*可设置值与width类似，优先级 width < flex-basis < max-width*<br>
@@ -115,12 +122,12 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ![flex-basis](https://pawellin.github.io/css-layout/img/flex-basis1.png)<br>
 ![flex-basis](https://pawellin.github.io/css-layout/img/flex-basis2.png)<br>
 
-* **flex ( flex-grow + flex-shrink + flex-basis )**<br>
+**3. 5 flex ( flex-grow + flex-shrink + flex-basis )**<br>
 `
 .item { flex: (<flex-grow> <flex-shrink> <flex-basis>) || auto }
 `
 <br>*两个快捷值：auto(1,1,auto)、none(0,0,auto)，优先使用flex，浏览器会自动推算其他值*<br>
-* **align-self (自身对齐方式)**<br>
+**3. 6 align-self (自身对齐方式)**<br>
 `
 .item { align-self: auto | flex-start | flex-end | center | baseline | stretch }
 `<br>*默认auto值继承父容器align-items的值，设置为其他值可覆盖继承值(父容器设置会超出换行时，覆盖无效)*<br>
