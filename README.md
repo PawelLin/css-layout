@@ -106,7 +106,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 * **align-self (自身对齐方式)**<br>
 `
 .item { align-self: auto | flex-start | flex-end | center | baseline | stretch }
-`<br>*默认auto值继承父容器align-items的值，设置为其他值可覆盖继承值*<br>
+`<br>*默认auto值继承父容器align-items的值，设置为其他值可覆盖继承值(父容器设置会超出换行时，覆盖无效)*<br>
 ![align-self](https://pawellin.github.io/css-layout/img/align-self.png)<br>
 
 ### 四、flex实例
