@@ -27,6 +27,13 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
 
 ### 二、flex容器属性
+* **flex-direction( 确定主轴线方向 )**
+* **flex-wrap ( 超出是否换行 )**
+* **flex-flow ( flex-direction + flex-wrap )**<br>
+* **justify-content   ( 子项目在主轴线上的对齐方式 )**<br>
+* **align-items   ( 子项目在交叉轴上的对齐方式 )**<br>
+* **align-content ( 多根轴线的对齐方式 )**<br>
+
 * **flex-direction( 确定主轴线方向 )**<br>
 ``
 .box { flex-direction: row | row-reverse | column | column-reverse }
