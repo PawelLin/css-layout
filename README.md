@@ -39,7 +39,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 * **flex-flow ( flex-direction + flex-wrap )**<br>
 ``
 .box { flex-flow: <flex-direction> <flex-wrap> }
-``
+``<br>*同时设置主轴线方向和超出是否换行*<br>
 
 * **justify-content   ( 子项目在主轴线上的对齐方式 )**<br>
 ``
