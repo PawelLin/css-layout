@@ -127,6 +127,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 .item { flex: (<flex-grow> <flex-shrink> <flex-basis>) || auto }
 `
 <br>*两个快捷值：auto(1,1,auto)、none(0,0,auto)，优先使用flex，浏览器会自动推算其他值*<br>
+
 **3. 6 align-self (自身对齐方式)**<br>
 `
 .item { align-self: auto | flex-start | flex-end | center | baseline | stretch }
