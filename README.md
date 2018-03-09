@@ -23,9 +23,9 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ``
 .box { flex-direction: row | row-reverse | column | column-reverse }
 ``<br>*依次为水平左右方向，垂直上下方向*<br>
-
+![row-reverse](https://pawellin.github.io/css-layout/img/row.png)
 ![row-reverse](https://pawellin.github.io/css-layout/img/row-reverse.png)
-
+![row-reverse](https://pawellin.github.io/css-layout/img/column.png)
 ![column-reverse](https://pawellin.github.io/css-layout/img/column-reverse.png)<br>
 
 * **flex-wrap ( 超出是否换行 )**<br>
