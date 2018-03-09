@@ -26,7 +26,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ``
 设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。<br>
 
-*注：以下flex属性示例图，子项目宽高默认为100px × 100px*
+*注：以下flex属性示例图，子项目宽高默认为 100px × 100px*
 
 ### 二、flex容器属性
 * **flex-direction**
