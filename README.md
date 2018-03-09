@@ -94,7 +94,9 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 * **flex-basis(分配多余空间前占主轴线的空间)**<br>
 `
 .item { flex-basis: <length || auto> }
-`<br>
+`<br>*可设置值与width类似，优先级 width < flex-basis < max-width*<br>
+缩放比例为1且超出父容器的空间，缩放计算公式为：分配前占的空间/子项目的总空间*需缩放空间<br>
+下图的计算结果为：
 ![flex-basis](https://pawellin.github.io/css-layout/img/flex-basis1.png)<br>
 ![flex-basis](https://pawellin.github.io/css-layout/img/flex-basis2.png)<br>
 
