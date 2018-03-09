@@ -27,14 +27,14 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
 
 ### 二、flex容器属性
-* **flex-direction( 确定主轴线方向 )**
-* **flex-wrap ( 超出是否换行 )**
-* **flex-flow ( flex-direction + flex-wrap )**<br>
-* **justify-content   ( 子项目在主轴线上的对齐方式 )**<br>
-* **align-items   ( 子项目在交叉轴上的对齐方式 )**<br>
-* **align-content ( 多根轴线的对齐方式 )**<br>
+* **flex-direction**
+* **flex-wrap**
+* **flex-flow**
+* **justify-content**
+* **align-items**
+* **align-content**
 
-* **flex-direction( 确定主轴线方向 )**<br>
+**2. 1 flex-direction( 确定主轴线方向 )**<br>
 ``
 .box { flex-direction: row | row-reverse | column | column-reverse }
 ``<br>*依次为水平左右方向，垂直上下方向*<br>
@@ -43,7 +43,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ![row-reverse](https://pawellin.github.io/css-layout/img/column.png)
 ![column-reverse](https://pawellin.github.io/css-layout/img/column-reverse.png)<br>
 
-* **flex-wrap ( 超出是否换行 )**<br>
+**2. 2 flex-wrap ( 超出是否换行 )**<br>
 ``
 .box { flex-wrap: nowrap | wrap | wrap-reverse }
 ``<br>*超过一行时，换行才有效*<br>
@@ -51,12 +51,12 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ![flex-shrink](https://pawellin.github.io/css-layout/img/wrap.png)<br>
 ![flex-shrink](https://pawellin.github.io/css-layout/img/wrap-reverse.png)<br>
 
-* **flex-flow ( flex-direction + flex-wrap )**<br>
+**2. 3 flex-flow ( flex-direction + flex-wrap )**<br>
 ``
 .box { flex-flow: <flex-direction> <flex-wrap> }
 ``<br>*同时设置主轴线方向和超出是否换行*<br>
 
-* **justify-content   ( 子项目在主轴线上的对齐方式 )**<br>
+**2. 4 justify-content   ( 子项目在主轴线上的对齐方式 )**<br>
 ``
 .box { justify-content: flex-start | flex-end | center | space-between | space-around }
 ``<br>*依次为主轴线起点对齐、终点对齐、居中对齐、两端对齐、两端间隔相等对齐*<br>
@@ -66,7 +66,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ![flex-shrink](https://pawellin.github.io/css-layout/img/space-between.png)<br>
 ![flex-shrink](https://pawellin.github.io/css-layout/img/space-around.png)<br>
 
-* **align-items   ( 子项目在交叉轴上的对齐方式 )**<br>
+**2. 5 align-items   ( 子项目在交叉轴上的对齐方式 )**<br>
 ``
 .box { align-items: stretch | flex-start | flex-end | center | baseline }
 ``<br>*依次为占满父容器高度、交叉轴起点对齐、终点对齐、中心对齐、子项目第一行文字基线对齐*<br>
@@ -76,7 +76,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ![flex-shrink](https://pawellin.github.io/css-layout/img/1center.png)<br>
 ![flex-shrink](https://pawellin.github.io/css-layout/img/1baseline.png)<br>
 
-* **align-content ( 多根轴线的对齐方式 )**<br>
+**2. 6 align-content ( 多根轴线的对齐方式 )**<br>
 ``
 .box { align-content: stretch | flex-start | flex-end | center | space-between | space-around }
 ``
