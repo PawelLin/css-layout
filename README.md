@@ -1,4 +1,12 @@
 # flex布局
+传统的布局，父层无法控制子层行列的适应，子层需依据文档流，或者通过破坏文档流的形式进行排列。<br>
+2009年，W3C提出了一种新的方案—-flex布局，可以很好的控制子层在父层中的行列适应，在一维空间为所欲为，能极大的控制子层的排列及对齐。目前各大浏览器都已经支持，部分旧版本可引入postcss用旧flex布局进行兼容。<br>
+## 浏览器支持
+new: 使用新版本的flex布局
+tweener：使用过渡版本的flexbox布局
+old：使用旧版本的box布局
+
+
 *参考文章链接：*[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)、[ A Visual Guide to CSS3 Flexbox Properties](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)
 ## 目录
 * **布局原理及组成**
@@ -118,7 +126,7 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 * tab层菜单自适应布局
 
 ### 五、grid布局扩展
-flex布局解决了在一维空间中的行和列中内容如何适应，但在二维空间上还是比较乏力，如一行排列的项目，其中一个项目的高度超出同等的项目，该高度将会占据整一行，导致下一行的项目无法紧凑排列。<br>
+flex布局解决了在一维空间中的行和列中内容如何适应，但在二维空间上还是比较乏力，如一行排列的项目，其中一个项目的高度超出同等的项目，该高度将会占据整一行，导致下一行的项目无法紧凑排列。如下图：<br>
 ![flex-out](https://pawellin.github.io/css-layout/img/flex-out.png)<br>
 而grid布局在行列的自由布局非常强大，虽然浏览器的兼容性还不大好。
 #### 兼容
