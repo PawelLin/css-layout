@@ -2,9 +2,9 @@
 传统的布局，父层无法很好地控制子层行列的适应，子层需依据文档流，或者通过破坏文档流的形式进行排列。<br>
 2009年，W3C提出了一种新的方案—-flex布局，可以很好的控制子层在父层中的行列适应，在一维空间为所欲为，能极大的控制子层的排列及对齐。目前各大浏览器都已经支持，部分旧版本可引入postcss用旧flex布局进行兼容。[css-hack在线转换](http://cssnext.io/playground/)<br>
 ## 浏览器支持
-* new: 使用新版本的flex布局
-* tweener：使用过渡版本的flexbox布局
-* old：使用旧版本的box布局<br>
+* new: 使用新版本的flex布局 (display: flex)
+* tweener：使用过渡版本的flexbox布局 (display: flexbox)
+* old：使用旧版本的box布局 (display: box)<br>
 ![flex-hack](https://pawellin.github.io/css-layout/img/flex-hack.png)<br>
 
 *参考文章链接：*[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)、[ A Visual Guide to CSS3 Flexbox Properties](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)
