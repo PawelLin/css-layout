@@ -117,6 +117,8 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 
 ### 五、grid布局扩展
 flex布局解决了在一维空间中的行和列中内容如何适应，但在二维空间上还是比较乏力，如一行排列的项目，其中一个项目的高度超出同等的项目，该高度将会占据整一行，导致下一行的项目无法紧凑排列。而grid布局在行列的自由布局非常强大，虽然浏览器的兼容性还不大好。
+#### 兼容
+![grid-hack](https://pawellin.github.io/css-layout/img/grid-hack.png)<br>
 #### 示例
 ![grid](https://pawellin.github.io/css-layout/img/grid-end.png)<br>
 
