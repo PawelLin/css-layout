@@ -58,6 +58,8 @@ flex布局基于主轴线及交叉轴进行排列布局，交叉轴跟随主轴�
 ![flex-shrink](https://pawellin.github.io/css-layout/img/center.png)<br>
 ![flex-shrink](https://pawellin.github.io/css-layout/img/space-between.png)<br>
 ![flex-shrink](https://pawellin.github.io/css-layout/img/space-around.png)<br>
+*扩展： 在父容器头尾添加空子节点，设置为两端对齐可实现所有子项目左右间隔相等*
+![flex-shrink](https://pawellin.github.io/css-layout/img/space-between1.png)<br>
 
 * **align-items   ( 子项目在交叉轴上的对齐方式 )**<br>
 ``
