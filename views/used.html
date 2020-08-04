@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>布局记录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .used {
+            display: flex;
+        }
+        .list {
+            width: 19%;
+            border: 1px solid #ffffff;
+        }
+        .list > p {
+            padding: 4px 0;
+            text-align: center;
+            border-bottom: 1px solid #ffffff;
+        }
+        .item {
+            display: flex;
+        }
+        .item > * {
+            padding: 4px;
+        }
+        .effect {
+            flex: 1;
+            border-right: 1px solid #ffffff;
+            font-size: 14px;
+        }
+        .code {
+            flex: 1.5;
+            height: 150px;
+            background-color: transparent;
+            border: none;
+            resize: none;
+            outline: none;
+            font-family: "Microsoft YaHei";
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul class="used">
+            <li class="list">
+                <p>文字行数限制</p>
+                <div class="item">
+                    <div class="effect">
+                        <div :style="style1 | styleObject">我是一串很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的字</div>
+                    </div>
+                    <textarea class="code" v-model="style1" spellcheck="false"></textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+	<script>
+		
+	var app = new Vue({
+        el: '#app',
+        data: {
+            style1: 'display: -webkit-box;\n-webkit-line-clamp: 2;\n-webkit-box-orient: vertical;\noverflow: hidden;',
+            style2: '',
+            list: [
+                { title: '文字行数限制', style: '' }
+            ]
+        },
+        filters: {
+  			styleObject: function (model) {
+    			if (!model) return {}
+    			let preModel = model.substring(0, model.lastIndexOf(';') + 1)
+    			let _model = model.replace(/:/g, '":"').replace(/\n/g, '').replace(/;/g,'","')
+				_model = _model.substring(0, _model.length - 2)
+				try {
+					return JSON.parse(`{"${_model}}`)
+				} catch(error) {
+					_model = preModel.replace(/:/g, '":"').replace(/\n/g, '').replace(/;/g,'","')
+					_model = _model.substring(0, _model.length - 2)
+					try {
+						return JSON.parse(`{"${_model}}`)
+					} catch(err) {
+						return {}
+					}
+				}
+  			}
+		},
+    })
+    </script>
+</body>
+</html>
