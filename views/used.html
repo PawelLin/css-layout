@@ -44,6 +44,153 @@
             font-family: "Microsoft YaHei";
             line-height: 20px;
         }
+        .nth-child {
+            overflow: hidden;
+        }
+        .nth-child > li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: #f9c;
+            transition: background-color 1s;
+        }
+        .nth-child-2 > li {
+            width: 49.5%;
+        }
+        .nth-child-2 > li:nth-child(2n + 1) {
+            margin-right: 0.5%;
+            background-color: #ff7875;
+        }
+        .nth-child-2 > li:nth-child(2n) {
+            margin-left: 0.5%;
+            background-color: #ff9c6e;
+        }
+        .nth-child-2 > li:nth-child(n + 3) {
+            margin-top: 1px;
+        }
+        .nth-child-3 > li {
+            width: 33%;
+        }
+        .nth-child-3 > li:nth-child(3n + 1) {
+            background-color: #ff7875;
+        }
+        .nth-child-3 > li:nth-child(3n + 2) {
+            margin: 0 0.5%;
+            background-color: #ff9c6e;
+        }
+        .nth-child-3 > li:nth-child(3n + 3) {
+            background-color: #ffc069;
+        }
+        .nth-child-3 > li:nth-child(n + 4) {
+            margin-top: 1px;
+        }
+        .nth-child-4 > li {
+            width: 24%;
+        }
+        .nth-child-4 > li:nth-child(4n + 1) {
+            background-color: #ff7875;
+        }
+        .nth-child-4 > li:nth-child(4n + 2) {
+            margin-left: 1.3%;
+            margin-right: 0.7%;
+            background-color: #ff9c6e;
+        }
+        .nth-child-4 > li:nth-child(4n + 3) {
+            margin-right: 1.3%;
+            margin-left: 0.7%;
+            background-color: #ffc069;
+        }
+        .nth-child-4 > li:nth-child(4n + 4) {
+            background-color: #ffd666;
+        }
+        .nth-child-4 > li:nth-child(n + 5) {
+            margin-top: 1px;
+        }
+        .nth-child-5 > li {
+            width: 19%;
+        }
+        .nth-child-5 > li:nth-child(5n + 1) {
+            background-color: #ff7875;
+        }
+        .nth-child-5 > li:nth-child(5n + 2) {
+            margin: 0 1.25%;
+            background-color: #ff9c6e;
+        }
+        .nth-child-5 > li:nth-child(5n + 3) {
+            background-color: #ffc069;
+        }
+        .nth-child-5 > li:nth-child(5n + 4) {
+            margin: 0 1.25%;
+        }
+        .nth-child-5 > li:nth-child(5n + 5) {
+            background-color: #fff566;
+        }
+        .nth-child-5 > li:nth-child(n + 6) {
+            margin-top: 1px;
+        }
+        .steps {
+            display: block;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .steps > .step {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ffffff;
+        }
+        .steps > section:not(:last-child):after,
+        .steps > div:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            bottom: -6px;
+            left: 10px;
+            width: 1px;
+            background-color: #19be6b;
+        }
+        .steps > section:not(:first-child):before,
+        .steps > div:not(:first-child):before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            bottom: 50%;
+            left: 10px;
+            width: 1px;
+            background-color: #19be6b;
+        }
+        .steps:not(.steps-end) > div:last-of-type:after {
+            background-color: lightslategray;
+        }
+        .steps.steps-end > div.step + section.step:before {
+            background-color: #19be6b;
+        }
+        .steps > section.step:before, .steps > section.step:after {
+            background-color: lightslategray;
+        }
+        .steps > .step + .step {
+            margin-top: 10px;
+        }
+        .steps > .step > i {
+            margin-left: 5px;
+            width: 8px;
+            height: 8px;
+            border: 1px solid #19be6b;
+            border-radius: 50%;
+            background-color: #EEE;
+            z-index: 1;
+        }
+        .steps > section.step > i {
+            border-color: lightslategray;
+        }
+        .steps > .step > div {
+            margin-left: 8px;
+            flex: 1;
+            font-size: 14px;
+        }
+        .steps > section.step > div {
+            color: lightslategray;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +205,56 @@
                     <textarea class="code" v-model="style1" spellcheck="false"></textarea>
                 </div>
             </li>
+            <li class="list">
+                <p>选择器nth-child</p>
+                <div class="item">
+                    <div class="effect">
+                        <ul class="nth-child" :class="style2">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="code">
+                        <button @click="setNthChild(2)">line-2</button>
+                        <button @click="setNthChild(3)">line-3</button>
+                        <button @click="setNthChild(4)">line-4</button>
+                        <button @click="setNthChild(5)">line-5</button>
+                    </div>
+                </div>
+            </li>
+            <li class="list">
+                <p>步骤条</p>
+                <div class="item">
+                    <div class="effect steps" :class="isStepsEnd3 ? 'steps-end' : ''">
+                        <div v-for="item in data3.list1" class="step">
+                            <i></i>
+                            <div>
+                                <p v-for="ite in item">步骤-ok{{ite}}</p>
+                            </div>
+                        </div>
+                        <section v-for="item in data3.list2" class="step">
+                            <i></i>
+                            <div>
+                                <p v-for="ite in item">步骤-wait{{ite}}</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="code">
+                        <button @click="setSteps('list1', 'add')">list1 add</button>
+                        <button @click="setSteps('list1', 'reduce')">list1 reduce</button>
+                        <button @click="setSteps('list2', 'add')">list2 add</button>
+                        <button @click="setSteps('list2', 'reduce')">list2 reduce</button>
+                        <button @click="isStepsEnd3 = !isStepsEnd3">isStepsEnd3 = {{isStepsEnd3}}</button>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
     <script src="../vue.js"></script>
@@ -68,9 +265,28 @@
         data: {
             style1: 'display: -webkit-box;\n-webkit-line-clamp: 2;\n-webkit-box-orient: vertical;\noverflow: hidden;',
             style2: '',
-            list: [
-                { title: '文字行数限制', style: '' }
-            ]
+            data3: {
+                list1: [1],
+                list2: [1, 2]
+            },
+            isStepsEnd3: false
+        },
+        methods: {
+            setNthChild (num) {
+                this.style2 = `nth-child-${num}`
+            },
+            setSteps (key, type) {
+                if (this.data3[key].length === 0 && type === 'reduce' ||
+                    this.data3[key].length > 2 && type === 'add'
+                ) {
+                    return
+                }
+                if (type === 'add') {
+                    this.data3[key].push(this.data3[key].length + 1)
+                } else {
+                    this.data3[key].pop()
+                }
+            }
         },
         filters: {
   			styleObject: function (model) {
