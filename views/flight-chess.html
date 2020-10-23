@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>飞行棋盘</title>
+	<style>
+	html, body, div{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+    [v-cloak] {
+	  	display: none;
+	}
+	.grid {
+		display: grid;
+		width: 100%;
+		height: 100vw;
+		grid-template-columns: repeat(30, 1fr);
+		grid-template-rows: repeat(30, 1fr);
+		grid-gap: 2px 2px;
+	}
+	.grid > div {
+		position: relative;
+	}
+	.grid > div > span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 12px;
+	}
+	.grid > div.nowrap > span {
+		white-space: nowrap;
+	}
+	.bg-none {
+		/* background-color: #d5d5d5; */
+	}
+	.bg-yellow {
+		background-color: #ffc66e;
+	}
+	.bg-blue {
+		background-color: #70dfdf;
+	}
+	.bg-red {
+		background-color: #ff8da3;
+	}
+	.bg-green {
+		background-color: #80d870;
+	}
+	.bg-green-red {
+		background-image: linear-gradient(45deg, #80d870 0%, #80d870 50%, #ff8da3 50%,#ff8da3 100%);
+	}
+	.bg-red-yellow {
+		background-image: linear-gradient(-45deg, #ffc66e 0%, #ffc66e 50%, #ff8da3 50%,#ff8da3 100%);
+	}
+	.bg-green-blue {
+		background-image: linear-gradient(-45deg, #70dfdf 0%, #70dfdf 50%, #80d870 50%,#80d870 100%);
+	}
+	.bg-blue-yellow {
+		background-image: linear-gradient(45deg, #70dfdf 0%, #70dfdf 50%, #ffc66e 50%,#ffc66e 100%);
+	}
+
+	.bg-green-top-left {
+		background-image: linear-gradient(135deg, #80d870 0%, #80d870 50%, transparent 50%, transparent 100%);
+	}
+	.bg-green-top-right {
+		background-image: linear-gradient(-135deg, #80d870 0%, #80d870 50%, transparent 50%, transparent 100%);
+	}
+	.bg-green-bottom-right {
+		background-image: linear-gradient(-45deg, #80d870 0%, #80d870 50%, transparent 50%, transparent 100%);
+	}
+	.bg-green-bottom-left {
+		background-image: linear-gradient(45deg, #80d870 0%, #80d870 50%, transparent 50%, transparent 100%);
+	}
+
+	.bg-yellow-top-left {
+		background-image: linear-gradient(135deg, #ffc66e 0%, #ffc66e 50%, transparent 50%, transparent 100%);
+	}
+	.bg-yellow-top-right {
+		background-image: linear-gradient(-135deg, #ffc66e 0%, #ffc66e 50%, transparent 50%, transparent 100%);
+	}
+	.bg-yellow-bottom-right {
+		background-image: linear-gradient(-45deg, #ffc66e 0%, #ffc66e 50%, transparent 50%, transparent 100%);
+	}
+	.bg-yellow-bottom-left {
+		background-image: linear-gradient(45deg, #ffc66e 0%, #ffc66e 50%, transparent 50%, transparent 100%);
+	}
+
+	.bg-red-top-left {
+		background-image: linear-gradient(135deg, #ff8da3 0%, #ff8da3 50%, transparent 50%, transparent 100%);
+	}
+	.bg-red-top-right {
+		background-image: linear-gradient(-135deg, #ff8da3 0%, #ff8da3 50%, transparent 50%, transparent 100%);
+	}
+	.bg-red-bottom-right {
+		background-image: linear-gradient(-45deg, #ff8da3 0%, #ff8da3 50%, transparent 50%, transparent 100%);
+	}
+	.bg-red-bottom-left {
+		background-image: linear-gradient(45deg, #ff8da3 0%, #ff8da3 50%, transparent 50%, transparent 100%);
+	}
+
+	.bg-blue-top-left {
+		background-image: linear-gradient(135deg, #70dfdf 0%, #70dfdf 50%, transparent 50%, transparent 100%);
+	}
+	.bg-blue-top-right {
+		background-image: linear-gradient(-135deg, #70dfdf 0%, #70dfdf 50%, transparent 50%, transparent 100%);
+	}
+	.bg-blue-bottom-right {
+		background-image: linear-gradient(-45deg, #70dfdf 0%, #70dfdf 50%, transparent 50%, transparent 100%);
+	}
+	.bg-blue-bottom-left {
+		background-image: linear-gradient(45deg, #70dfdf 0%, #70dfdf 50%, transparent 50%, transparent 100%);
+	}
+
+	.bg-all {
+        background-color: #70dfdf;
+		border-style: solid;
+		border-color:#70dfdf #80d870 #ff8da3 #ffc66e;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="grid">
+		<div class="grid" v-cloak>
+			<div
+				v-for="item in items2"
+				:ref="item.color"
+				:style="{ gridArea: `span ${item.row || 1} / span ${item.col || 1}` }"
+				:class="[(item.color && `bg-${item.color}`) || 'bg-none', item.col >= item.row && 'nowrap']"
+			>
+			<!-- <span>{{item.row}} {{item.col}}</span> -->
+			</div>
+		</div>
+	</div>
+	<script src="../vue.js"></script>
+	<script>
+		
+		new Vue({
+			el: '#grid',
+			data: {
+				items: [
+					{ row: 3, col: 3, model: '', color: 'yellow' },
+					{ row: 3, col: 3, model: '', color: 'yellow' },
+					{ row: 6, col: 1, model: '' },
+					{ row: 3, col: 3, model: '', color: 'green-bottom-right' },
+					{ row: 3, col: 2, model: '', color: 'red' },
+					{ row: 3, col: 2, model: '', color: 'yellow' },
+					{ row: 3, col: 2, model: '', color: 'blue' },
+					{ row: 3, col: 2, model: '', color: 'green' },
+					{ row: 3, col: 2, model: '', color: 'red' },
+					{ row: 3, col: 3, model: '', color: 'yellow-bottom-left' },
+					{ row: 6, col: 1, model: '' },
+					{ row: 3, col: 3, model: '', color: 'blue' },
+					{ row: 3, col: 3, model: '', color: 'blue' },
+
+					{ row: 3, col: 3, model: '', color: 'yellow' },
+					{ row: 3, col: 3, model: '', color: 'yellow' },
+					{ row: 2, col: 3, model: '', color: 'blue' },
+					{ row: 4, col: 4, model: '' },
+					{ row: 2, col: 2, model: '', color: 'blue' },
+					{ row: 4, col: 4, model: '' },
+					{ row: 2, col: 3, model: '', color: 'blue' },
+					{ row: 3, col: 3, model: '', color: 'blue' },
+					{ row: 3, col: 3, model: '', color: 'blue' },
+
+					{ row: 2, col: 3, model: '', color: 'yellow' },
+					{ row: 2, col: 2, model: '', color: 'blue' },
+					{ row: 2, col: 3, model: '', color: 'green' },
+
+					{ row: 1, col: 7, model: '' },
+					{ row: 1, col: 7, model: '' },
+
+					{ row: 3, col: 3, model: '', color: 'red-bottom-right' },
+					{ row: 3, col: 2, model: '', color: 'yellow' },
+					{ row: 3, col: 2, model: '', color: 'blue' },
+					{ row: 3, col: 3, model: '', color: 'green-red' },
+					{ row: 2, col: 4, model: '', color: 'red', arrow: true },
+					{ row: 2, col: 2, model: '', color: 'blue' },
+					{ row: 2, col: 4, model: '', color: 'red', arrow: true },
+					{ row: 3, col: 3, model: '', color: 'red-yellow' },
+					{ row: 3, col: 2, model: '', color: 'blue' },
+					{ row: 3, col: 2, model: '', color: 'green' },
+					{ row: 3, col: 3, model: '', color: 'red-bottom-left' },
+
+					{ row: 1, col: 4, model: '' },
+					{ row: 2, col: 2, model: '', color: 'blue' },
+					{ row: 1, col: 4, model: ''},
+
+					{ row: 2, col: 3, model: '', color: 'green' },
+					{ row: 4, col: 4, model: '' },
+					{ row: 4, col: 2, model: '', color: 'green', arrow: true },
+					{ row: 3, col: 5, model: '' },
+					{ row: 3, col: 5, model: '' },
+					{ row: 4, col: 2, model: '', color: 'yellow', arrow: true },
+					{ row: 4, col: 4, model: '' },
+					{ row: 2, col: 3, model: '', color: 'yellow' },
+
+					{ row: 2, col: 2, model: '', color: 'blue' },
+
+					{ row: 2, col: 3, model: '', color: 'blue' },
+					{ row: 2, col: 3, model: '', color: 'blue' },
+					
+					{ row: 1, col: 4, model: '' },
+					{ row: 4, col: 4, model: '', color: 'all' },
+					{ row: 1, col: 4, model: '' },
+
+					{ row: 2, col: 3, model: '', color: 'yellow' },
+					{ row: 2, col: 2, model: '', color: 'yellow' },
+					{ row: 2, col: 2, model: '', color: 'yellow' },
+					{ row: 2, col: 2, model: '', color: 'yellow' },
+					{ row: 2, col: 2, model: '', color: 'yellow' },
+					{ row: 2, col: 2, model: '', color: 'yellow' },
+					{ row: 2, col: 2, model: '', color: 'green' },
+					{ row: 2, col: 2, model: '', color: 'green' },
+					{ row: 2, col: 2, model: '', color: 'green' },
+					{ row: 2, col: 2, model: '', color: 'green' },
+					{ row: 2, col: 2, model: '', color: 'green' },
+					{ row: 2, col: 3, model: '', color: 'green' },
+
+					{ row: 2, col: 3, model: '', color: 'red' },
+					{ row: 4, col: 4, model: '' },
+					{ row: 4, col: 2, model: '', color: 'green', arrow: true },
+					{ row: 1, col: 4, model: '' },
+					{ row: 1, col: 4, model: '' },
+					{ row: 4, col: 2, model: '', color: 'yellow', arrow: true },
+					{ row: 4, col: 4, model: '' },
+					{ row: 2, col: 3, model: '', color: 'red' },
+
+					{ row: 3, col: 5, model: '' },
+					{ row: 2, col: 2, model: '', color: 'red' },
+					{ row: 3, col: 5, model: '' },
+
+					{ row: 2, col: 3, model: '', color: 'green' },
+					{ row: 2, col: 3, model: '', color: 'yellow' },
+
+					{ row: 2, col: 2, model: '', color: 'red' },
+					
+					{ row: 3, col: 3, model: '', color: 'blue-top-right' },
+					{ row: 3, col: 2, model: '', color: 'yellow' },
+					{ row: 3, col: 2, model: '', color: 'red' },
+					{ row: 3, col: 3, model: '', color: 'green-blue' },
+					{ row: 1, col: 4, model: '' },
+					{ row: 1, col: 4, model: '' },
+					{ row: 3, col: 3, model: '', color: 'blue-yellow' },
+					{ row: 3, col: 2, model: '', color: 'red' },
+					{ row: 3, col: 2, model: '', color: 'green' },
+					{ row: 3, col: 3, model: '', color: 'blue-top-left' },
+
+					{ row: 2, col: 4, model: '', color: 'blue', arrow: true },
+					{ row: 2, col: 2, model: '', color: 'red' },
+					{ row: 2, col: 4, model: '', color: 'blue', arrow: true },
+					
+					{ row: 1, col: 7, model: '' },
+					{ row: 2, col: 3, model: '', color: 'yellow' },
+					{ row: 4, col: 4, model: '' },
+					{ row: 2, col: 2, model: '', color: 'red' },
+					{ row: 4, col: 4, model: '' },
+					{ row: 2, col: 3, model: '', color: 'green' },
+					{ row: 1, col: 7, model: '' },
+
+					{ row: 3, col: 3, model: '', color: 'red' },
+					{ row: 3, col: 3, model: '', color: 'red' },
+					{ row: 6, col: 1, model: '' },
+					{ row: 6, col: 1, model: '' },
+					{ row: 3, col: 3, model: '', color: 'green' },
+					{ row: 3, col: 3, model: '', color: 'green' },
+
+					{ row: 2, col: 3, model: '', color: 'red' },
+					{ row: 2, col: 2, model: '', color: 'red' },
+					{ row: 2, col: 3, model: '', color: 'red' },
+
+					{ row: 3, col: 3, model: '', color: 'red' },
+					{ row: 3, col: 3, model: '', color: 'red' },
+					{ row: 3, col: 3, model: '', color: 'green-top-right' },
+					{ row: 3, col: 2, model: '', color: 'blue' },
+					{ row: 3, col: 2, model: '', color: 'yellow' },
+					{ row: 3, col: 2, model: '', color: 'red' },
+					{ row: 3, col: 2, model: '', color: 'green' },
+					{ row: 3, col: 2, model: '', color: 'blue' },
+					{ row: 3, col: 3, model: '', color: 'yellow-top-left' },
+					{ row: 3, col: 3, model: '', color: 'green' },
+					{ row: 3, col: 3, model: '', color: 'green' }
+				],
+				items2: []
+            },
+            mounted () {
+				const timer = setInterval(() => {
+					if (!this.items.length) {
+						clearInterval(timer)
+					} else {
+						let item = JSON.parse(JSON.stringify(this.items.shift())) 
+						while (!item.color) {
+							this.items2.push(item)
+							item = JSON.parse(JSON.stringify(this.items.shift())) 
+						}
+						this.items2.push(item)
+						if (item.color === 'all') {
+							this.$nextTick(() => {
+								const all = this.$refs.all[0]
+								all.style.borderWidth = `${all.getBoundingClientRect().width / 2}px`
+							})
+						}
+					}
+				}, 200)
+            }
+		})
+	</script>
+</body>
+</html>
