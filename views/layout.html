@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+        body {
+            --dice-width: 100px;
+            --dice-size: 25%;
+            --dice-width-one: calc(var(--dice-width) - var(--dice-size));
+            --dice-width-one-half: calc(var(--dice-width-one) / 2);
+            --dice-width-three: calc(var(--dice-width) - var(--dice-size) * 3);
+            --dice-width-three-half: calc(var(--dice-width-three) / 2);
+        }
+        .dice-3d {
+            margin: 100px;
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            transform-origin: 50px 50px;
+            transform: rotateX(-33.5deg) rotateY(45deg);
+        }
+        .dice-3d > .dice-outside {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .dice-3d > .dice-outside + .dice-outside {
+            margin-left: 0;
+        }
+        .dice-3d > .dice-outside:nth-child(1) {
+            transform: rotateX(90deg) translateZ(50px);
+        }
+        .dice-3d > .dice-outside:nth-child(2) {
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+        .dice-3d > .dice-outside:nth-child(3) {
+            transform: translateZ(50px);
+        }
+        .dice-3d > .dice-outside:nth-child(4) {
+            transform: rotateX(-180deg) translateZ(50px);
+        }
+        .dice-3d > .dice-outside:nth-child(5) {
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+        .dice-3d > .dice-outside:nth-child(6) {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+        .dice-outside {
+            margin-top: 10px;
+            width: var(--dice-width);
+            height: var(--dice-width);
+        }
+        .dice-outside + .dice-outside {
+            margin-left: 10px;
+        }
+        .dice {
+            position: relative;
+            width: var(--dice-size);
+            height: var(--dice-size);
+            border-radius: 50%;
+            transition: background-color .5s ease;
+        }
+        .dice-blue > .dice {
+            background-color: blue;
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5), inset -1px -1px 2px rgba(0, 0, 255, 0.5);
+        }
+        .dice-red > .dice {
+            background-color: red;
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5), inset -1px -1px 2px rgba(255, 0, 0, 0.5);
+        }
+        .dice-inside {
+            width: 100%;
+            height: 100%;
+            border-radius: 10%;
+            background-color: #fff;
+        }
+        .dice-one {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dice-two {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .dice-three {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .dice-three > .dice:nth-child(1) {
+            align-self: flex-end;
+            margin-right: var(--dice-width-three-half);
+        }
+        .dice-three > .dice:nth-child(2) {
+            margin: 0 var(--dice-width-one-half);
+        }
+        .dice-three > .dice:nth-child(3) {
+            margin-left: var(--dice-width-three-half);
+        }
+        .dice-four {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+        }
+        .dice-four > .dice {
+            margin: 0 var(--dice-width-three-half);
+        }
+        .dice-five {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: center;
+        }
+        .dice-five > .dice:not(:nth-child(3)) {
+            margin: 0 var(--dice-width-three-half);
+        }
+        .dice-five > .dice:nth-child(3) {
+            margin: 0 var(--dice-width-one-half);
+        }
+        .dice-six {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: space-evenly;
+        }
+        .dice-six > .dice {
+            margin: 0 var(--dice-width-three-half);
+        }
+        .dice-list-move {
+            transition: all 0.5s ease;
+        }
+        .dice-list-leave-active {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="layout" v-cloak>
+        <div class="dice-3d">
+            <div v-for="num in 6" class="dice-outside">
+                <div class="dice-inside" :class="[numClass[num - 1], colorClass[num - 1]]">
+                    <div v-for="i in num" class="dice" :key="i"></div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="dice-outside">
+            <transition-group name="dice-list" tag="div" class="dice-inside" :class="[numClass[num - 1], colorClass[num - 1]]">
+                <div v-for="i in num" class="dice" :key="i"></div>
+            </transition-group>
+        </div>
+        <button @click="changeNum">点数</button> -->
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el: '#layout',
+            data: {
+                num: 1,
+                numClass: ['dice-one', 'dice-two', 'dice-three', 'dice-four', 'dice-five', 'dice-six'],
+                colorClass: ['dice-red', 'dice-blue', 'dice-blue', 'dice-red', 'dice-blue', 'dice-blue']
+            },
+            methods: {
+                changeNum () {
+                    const num = this.num + 1
+                    this.num = num > 6 ? 1 : num
+                }
+            }
+        })
+    </script>
+</body>
+</html>
